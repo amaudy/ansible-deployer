@@ -10,9 +10,12 @@ Deploy User
 Role Variables
 --------------
 
-- User
-- authorized_keys' file
-- Deploy key (both private and public key)
+`vars.yml`
+
+```yml
+deploy_user: ''
+deploy_key: ''
+```
 
 Dependencies
 ------------
@@ -28,7 +31,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - amaudy.deployer
 
 License
 -------
