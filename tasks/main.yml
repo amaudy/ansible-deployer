@@ -1,16 +1,16 @@
 ---
 # tasks file for amaudy.deployer
-- name: Create users with home directory
-  user: name='{{ deploy_user }}' shell=/bin/bash createhome=yes comment='Created by Ansible'
+- name: Add Linux User
+  user: name={{ deploy_user }} shell=/bin/bash createhome=yes comment='Created by Ansible'
 
-- name: Creates directory
+- name: Creates .ssh directory
   file:
-    path: /home/'{{ deploy_user }}'/.ssh
+    path: '/home/{{ deploy_user }}/.ssh'
     state: directory
     owner: '{{ deploy_user }}'
     group: '{{ deploy_user }}'
 
-- name: Setup | authorized key upload
+- name: Added public key to server.
   authorized_key:
     user: '{{ deploy_user }}'
     key: '{{deploy_key}}'
